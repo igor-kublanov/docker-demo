@@ -3,7 +3,7 @@ node {
    stage('MyPreparation') {
      checkout scm
      sh "git rev-parse --short=9 HEAD > .git/commit-id"                        
-     commit_id = readFile('.git/commit-id').trim()
+     commit_id = "pipeline-" + readFile('.git/commit-id').trim()
      print("#4307 | commit_id = " + commit_id)
    }
    stage('MyTest') {
