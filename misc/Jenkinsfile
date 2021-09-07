@@ -4,6 +4,8 @@ node {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
+     print("#4307 | commit_id = " + commit_id)
+     print("#4307 | commit_id.9 = " + commit_id.substring(0, 8))
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs') {
