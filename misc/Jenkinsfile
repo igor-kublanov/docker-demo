@@ -14,8 +14,9 @@ node {
    }
    stage('MyDocker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-       //def appLatest = docker.build("ik4307ik/docker-nodejs-demo:latest", '.').push()
-       def app = docker.build("ik4307ik/docker-nodejs-demo:${commit_id}", '.').push('latest')
+       def app = docker.build("ik4307ik/docker-nodejs-demo", '.')
+       app.push("${commit_id}")
+       app.push('latest')
      }
    }
 }
